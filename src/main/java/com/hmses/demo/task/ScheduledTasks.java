@@ -58,8 +58,8 @@ public class ScheduledTasks {
         properties.put("mail.imap.port", imapPort);
         properties.put("mail.imap.starttls.enable", starttls);
     }
-
-    @Scheduled(fixedDelay = 60000)
+    @Scheduled(cron = "0 0 10 * * *") // Every day, at 10 AM.
+    // @Scheduled(fixedDelay = 60000)
     public void readEmails() throws MessagingException, IOException {
         Session session = Session.getDefaultInstance(properties);
         Store store = session.getStore(protocol);
